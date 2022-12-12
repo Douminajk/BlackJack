@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlackJack;
 
 namespace BlackJack
 {
-    internal class Game
+    public class Game
     {
-        internal bool Status;
-        internal string Continue;
-        internal string Name;
-        internal Game(string _continue, bool _status, string _name) 
+        public bool Status;
+        public string Continue;
+        public string Name;
+        public Game(string _continue, bool _status, string _name) 
         {
             Status = _status;
             Continue = _continue;
             Name = _name;
         }
 
-        internal void Login()
+        public void Login()
         {
             bool validation = true;
 
@@ -42,7 +43,7 @@ namespace BlackJack
             }
         }
 
-        internal void Menu()
+        public void Menu()
         {
             while (Status)
             {

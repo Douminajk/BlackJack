@@ -16,6 +16,12 @@ namespace OOP
 
             Game game = new Game(start, status, name);
 
+            string[] suits = {"♥", "♦", "♣", "♠"};
+
+            string[] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"};
+
+            Deck deck = new Deck(suits, values);
+
             game.Login();
 
             game.Menu();
