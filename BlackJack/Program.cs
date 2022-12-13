@@ -11,6 +11,7 @@ namespace OOP
             string start = Console.ReadLine();
             bool status = true;
 
+
             Console.WriteLine("Napiš zde svoje jméno: ");
             string name = Console.ReadLine();
 

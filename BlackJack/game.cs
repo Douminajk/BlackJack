@@ -29,6 +29,14 @@ namespace BlackJack
                 {
                     Console.WriteLine("Vítáme tě tu znovu " + Name);
                     validation = false;
+
+                    string[] suits = { "♥", "♦", "♣", "♠" };
+
+                    string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
+
+                    Deck deck = new Deck(suits, values);
+
+                    deck.Shuffle();
                 }
                 else if (Continue == "2")
                 {
