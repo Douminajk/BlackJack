@@ -22,7 +22,7 @@ namespace BlackJack
         public void Login()
         {
             bool validation = true;
-
+            
             while (validation)
             {
                 if (Continue == "1")
@@ -34,6 +34,14 @@ namespace BlackJack
                 {
                     Console.WriteLine("Vítej " + Name);
                     validation = false;
+
+                    string[] suits = { "♥", "♦", "♣", "♠" };
+
+                    string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
+
+                    Deck deck = new Deck(suits, values);
+
+                    deck.Shuffle();
                 }
                 else
                 {
