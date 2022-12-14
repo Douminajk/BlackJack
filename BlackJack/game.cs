@@ -29,27 +29,11 @@ namespace BlackJack
                 {
                     Console.WriteLine("Vítáme tě tu znovu " + Name);
                     validation = false;
-
-                    string[] suits = { "♥", "♦", "♣", "♠" };
-
-                    string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
-
-                    Deck deck = new Deck(suits, values);
-
-                    deck.Shuffle();
                 }
                 else if (Continue == "2")
                 {
                     Console.WriteLine("Vítej " + Name);
                     validation = false;
-
-                    string[] suits = { "♥", "♦", "♣", "♠" };
-
-                    string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
-
-                    Deck deck = new Deck(suits, values);
-
-                    deck.Shuffle();
                 }
                 else
                 {
@@ -70,7 +54,15 @@ namespace BlackJack
                 {
                     if (menu == "1")
                     {
-                        Console.WriteLine("hra");
+                        int wallet = 5000;
+
+                        int numberofcards = 0;
+                        int total = 0;
+                        List<string> hands = new List<string>();
+
+                        Gamer gamer = new Gamer(Name, numberofcards, total, wallet, hands);
+
+                        gamer.PickFirstCards();
                     }
                     else if (menu == "2")
                     {
