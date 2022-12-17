@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlackJack;
-
-namespace BlackJack
+﻿namespace BlackJack
 {
     public class Card
     {
@@ -17,7 +10,6 @@ namespace BlackJack
             Suit = _suit;
             Value = _value;
         }
-
 
     }
 }

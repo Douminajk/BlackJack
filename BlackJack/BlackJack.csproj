@@ -22,4 +22,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="zebricek.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

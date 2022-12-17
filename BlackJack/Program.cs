@@ -1,5 +1,4 @@
-﻿using System;
-using BlackJack;
+﻿using BlackJack;
 
 namespace OOP
 {
@@ -7,20 +6,14 @@ namespace OOP
     {
         static void Main()
         {
-            Console.WriteLine("Vítej, jsi nový hráč nebo už tady máš účet?(1/2) ");
-            string start = Console.ReadLine();
             bool status = true;
-
-
             Console.WriteLine("Napiš zde svoje jméno: ");
             string name = Console.ReadLine();
 
-            Game game = new Game(start, status, name);
-
+            Game game = new Game(status, name);
             game.Login();
-
+            game.Files();
             game.Menu();
-
         }
     }
 }
