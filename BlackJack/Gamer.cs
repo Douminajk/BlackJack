@@ -177,16 +177,7 @@ namespace BlackJack
                             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
                             Total = Total + Value_to_add;
 
-                            if (Total < 21)
-                            {
-                                Console.WriteLine("\n----------------------------------\n");
-                                Console.WriteLine("Váš součet karet je: " + Total + "\n chcete brát další kartu? (h) \n a nebo stát? (s) ");
-                                choose = Console.ReadLine();
-                            }
-                            else
-                            {
-                                choose = "s";
-                            }
+                            choose = "s";
                         }
                         else
                         {
