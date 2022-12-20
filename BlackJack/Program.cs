@@ -13,7 +13,7 @@ namespace OOP
             Game game = new Game(status, name);
             game.Login();
             game.Files();
-            game.Menu();
+            game.GameLoop();
         }
     }
 }

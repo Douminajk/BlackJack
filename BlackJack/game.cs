@@ -64,7 +64,7 @@ namespace BlackJack
             }
         }
 
-        public void Menu()
+        public void GameLoop()
         {
             int wallet = 5000;
             int numberofcards = 0;
@@ -96,9 +96,6 @@ namespace BlackJack
                         string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
 
                         Deck deck = new Deck(suits, values);
-
-                        
-
                         int bet = gamer.Bet(wallet);
                         gamer.PickFirstCards(deck);
                         string chosen = gamer.firstChoose();
