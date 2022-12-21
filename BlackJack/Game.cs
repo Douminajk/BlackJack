@@ -94,7 +94,7 @@ namespace BlackJack
                         string[] suits = { "♥", "♦", "♣", "♠" };
 
                         string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A" };
-
+                        
                         Deck deck = new Deck(suits, values);
 
                         
@@ -167,10 +167,11 @@ namespace BlackJack
                             Console.WriteLine("\n----------------------------------\n");
                             Console.WriteLine("něco se posralo hihihiha");
                         }
+                        gamer.Reset();
                     }
                     else if (menu == "2")
                     {
-                        gamer.Save();
+                        gamer.Save(wallet);
                         gamer.ShowData();
                     }
                     else if (menu == "3")
@@ -186,7 +187,7 @@ namespace BlackJack
                         Console.WriteLine("\n----------------------------------\n");
                         Console.WriteLine("Konec hry");
                         Status = false;
-                        gamer.Save();
+                        gamer.Save(wallet);
                     }
                 }
             }

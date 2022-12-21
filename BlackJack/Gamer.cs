@@ -23,11 +23,12 @@ namespace BlackJack
         public void PickFirstCards(Deck deck)
         {
             Console.WriteLine("\nVaše karty jsou: ");
+            //volání funkce na zamíchání decku
             deck.Shuffle(Hand);
 
             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
             Total = Total + Value_to_add;
-            
+            //volání funkce na zamíchání decku
             deck.Shuffle(Hand);
 
             Number_of_cards++;
@@ -36,13 +37,13 @@ namespace BlackJack
             Total = Total + Value_to_add2;
         }
 
-        public void Save()
+        public void Save(int wallet)
         {
             //pokud nemá uživatel 0 bodů
-            if (Money != 0)
+            if (wallet != 0)
             {
                 string newFileName = @"zebricek.csv";
-                string nameDetails = string.Format("{0},{1}\n", Name, Money);
+                string nameDetails = string.Format("{0},{1}\n", Name, wallet);
                 //pokud neexistuje file
                 if (!File.Exists(newFileName))
                 {
@@ -111,7 +112,7 @@ namespace BlackJack
                         if (names.Contains(columns[0]))
                         {
                             top++;
-                            Console.WriteLine(top + ": " + columns[0] + " | počet vítězství: " + term);
+                            Console.WriteLine(top + ": " + columns[0] + " | počet peněz: " + term);
                             counteros++;
                             names = names.Where(val => val != columns[0]).ToArray();
                         }
@@ -130,6 +131,11 @@ namespace BlackJack
             }
         }
 
+        public void Reset()
+        {
+            Total = 0;
+        }
+
         public string firstChoose()
         {
             bool ok = true;
@@ -137,12 +143,15 @@ namespace BlackJack
             Console.WriteLine("\nVáš součet karet je: " + Total + "\n\nChcete zdvojnásobit sázku? (d) \nnebo brát další kartu? (h) \na nebo stát? (s) ");
             string choose = Console.ReadLine();
 
+            //loop na kontorlu odpovědi v pokračování hry
             while (ok)
             {
+                //pokud je zadaný správný input
                 if (choose == "d" || choose == "h" || choose == "s")
                 {
                     ok = false;
                 }
+                //pokud byl zadán špatný input
                 else
                 {
                     Console.WriteLine("\n----------------------------------\n");
@@ -155,14 +164,16 @@ namespace BlackJack
         }
         public int GameContinue(Deck deck, string choose)
         {
+            //pokud hráč má méně než 21 (součet)
             if (Total < 21)
             {
-                
-
+                //dokud nechce hráč stát
                 while (choose != "s")
                 {
+                    //pokud chce dát double
                     if (choose == "d")
                     {
+                        //pokud má méně než 21
                         if (Total < 21)
                         {
                             Money = Money * 2;
@@ -172,26 +183,30 @@ namespace BlackJack
 
                             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
                             Total = Total + Value_to_add;
-
+                            //pokud zase nemá pod 21
                             if (Total < 21)
                             {
                                 Console.WriteLine("\n----------------------------------\n");
                                 Console.WriteLine("Váš součet karet je: " + Total + "\n chcete brát další kartu? (h) \n a nebo stát? (s) ");
                                 choose = Console.ReadLine();
                             }
+                            //pokud jo tak se ukončí cyklus
                             else
                             {
                                 choose = "s";
                             }
                         }
+                        //pokud jo tak ukončit cyklus
                         else
                         {
                             choose = "s";
                         }
 
                     }
+                    //pokud si hráč zvolí "hit"
                     else if (choose == "h")
                     {
+                        //ověření pokud nemá nad 21
                         if (Total < 21)
                         {
                             deck.Shuffle(Hand);
@@ -199,18 +214,20 @@ namespace BlackJack
 
                             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
                             Total = Total + Value_to_add;
-
+                            //ověření pokud nemá nad 21
                             if (Total < 21)
                             {
                                 Console.WriteLine("\n----------------------------------\n");
                                 Console.WriteLine("Váš součet karet je: " + Total + "\n chcete brát další kartu? (h) \n a nebo stát? (s) ");
                                 choose = Console.ReadLine();
                             }
+                            //pokud jo tak ukončit cyklus
                             else
                             {
                                 choose = "s";
                             }
                         }
+                        //pokud jo tak ukončit cyklus
                         else
                         {
                             choose = "s";
@@ -220,7 +237,7 @@ namespace BlackJack
             }
             return Total;
         }
-
+        
         public int Bet(int money)
         {
             Console.WriteLine("\n----------------------------------\n");
