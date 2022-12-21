@@ -11,9 +11,12 @@ namespace OOP
             string name = Console.ReadLine();
 
             Game game = new Game(status, name);
+            //login hráče
             game.Login();
+            //ověření existence filu
             game.Files();
-            game.Menu();
+            //loop celé hry
+            game.GameLoop();
         }
     }
 }

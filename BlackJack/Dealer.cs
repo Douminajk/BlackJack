@@ -17,6 +17,7 @@
         {
             Console.WriteLine("\n----------------------------------\n");
             Console.WriteLine("\nDealerovi karty jsou: ");
+            //loop dokud nemá dealer nad 17
             while (Total < 17)
             {
                 deck.Shuffle(Hand);

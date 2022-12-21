@@ -7,8 +7,10 @@
 
         public Deck(string[] _suits, string[] _values )
         {
+            //cyklus, který běží po jednom suitz
             foreach(string suit in _suits)
             {
+                //ke každýmu suitu se přidají všechny values
                 foreach(string value in _values)
                 {
                     Cards.Add(new Card(value, suit));
@@ -28,10 +30,13 @@
 
             UsedCards.Add(new Card(value, suit));
 
+            //loop
             while (ok)
             {
+                //cyklus, aby proběhl v rozmezí kolik je použitých karet
                 for (int i = 0; i < UsedCards.Count; i++)
                 {
+                    //pokud je karta ve využitých kartách, tak vytvoří novou
                     if (UsedCards[i].Suit == suit && UsedCards[i].Value == value)
                     {
                         random = new Random();
@@ -43,6 +48,7 @@
                     }
                 }
 
+                //pokud se nenašel duplikát
                 if (counter == 0)
                 {
                     ok = false;
@@ -59,18 +65,23 @@
 
         public int AddToTotal(List<string> hand, int total, int number_of_cards)
         {
+            //pokud přidaná karta není číslo
             if (!int.TryParse(hand[number_of_cards], out int result))
             {
+                //pokud se nerovná karta A
                 if (hand[number_of_cards] != "A")
                 {
                     result = 10;
                 }
+                //pokud ne
                 else
                 {
+                    //rozlišení jestli se má přidat hráčí 1 nebo 11
                     if (total > 10)
                     {
                         result = 1;
                     }
+                    //pokud má hráč méně nebo rovno 10
                     else
                     {
                         result = 11;
