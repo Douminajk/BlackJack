@@ -32,10 +32,12 @@ namespace BlackJack
             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
             Total = Total + Value_to_add;
             
+            //zamíchání balíčku
             deck.Shuffle(Hand);
 
             Number_of_cards++;
-
+             
+            //přidání do součtu karet
             int Value_to_add2 = deck.AddToTotal(Hand, Total, Number_of_cards);
             Total = Total + Value_to_add2;
         }
@@ -140,13 +142,16 @@ namespace BlackJack
             Console.WriteLine("\n----------------------------------\n");
             Console.WriteLine("\nVáš součet karet je: " + Total + "\n\nChcete zdvojnásobit sázku? (d) \nnebo brát další kartu? (h) \na nebo stát? (s) ");
             string choose = Console.ReadLine();
-
+            
+            /loop
             while (ok)
-            {
+            {   
+                pokud je správný input, tak se uknčí loop
                 if (choose == "d" || choose == "h" || choose == "s")
                 {
                     ok = false;
                 }
+                //pokud ne, tak se ptá uživatele dokud neodpoví správně
                 else
                 {
                     Console.WriteLine("\n----------------------------------\n");
@@ -159,53 +164,66 @@ namespace BlackJack
         }
         public int GameContinue(Deck deck, string choose)
         {
+            //pokud má hráč méně jak 21
             if (Total < 21)
             {
                 
-
+                //loop, dokud nechce hráč stát
                 while (choose != "s")
                 {
+                    //pokud hrč chce zdvojnásobit sázku
                     if (choose == "d")
                     {
+                        //pokud má méně než 21
                         if (Total < 21)
                         {
                             Money = Money * 2;
-
+                            
+                            //zamíchání balíčku
                             deck.Shuffle(Hand);
                             Number_of_cards++;
-
+                            
+                            //přidání do součtu
                             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
                             Total = Total + Value_to_add;
 
                             choose = "s";
                         }
+                        //pokud má více než 21, tak se uknčí loop
                         else
                         {
                             choose = "s";
                         }
 
                     }
+                    //pokud hráč chce lízat další kartu
                     else if (choose == "h")
                     {
+                        //pokud má méně než 21
                         if (Total < 21)
                         {
+                            //zamíchání balíčku
                             deck.Shuffle(Hand);
                             Number_of_cards++;
-
+                            
+                            //přidání do součtu
                             int Value_to_add = deck.AddToTotal(Hand, Total, Number_of_cards);
                             Total = Total + Value_to_add;
-
+                            
+                            //pokud po pidání do součtu má méně než 21
                             if (Total < 21)
                             {
                                 Console.WriteLine("\n----------------------------------\n");
                                 Console.WriteLine("Váš součet karet je: " + Total + "\n chcete brát další kartu? (h) \n a nebo stát? (s) ");
                                 choose = Console.ReadLine();
                             }
+                            //pokud má více než 21 ukončí se loop
                             else
                             {
                                 choose = "s";
                             }
                         }
+                        //pokud má více než 21
                         else
                         {
                             choose = "s";
@@ -223,26 +241,31 @@ namespace BlackJack
             string bet = Console.ReadLine();
             bool ok = true;
             int result = 0;
-
+            
+            //loop
             while (ok)
-            {
+            {   
+                //zjistění jestli je input intiger
                 if (int.TryParse(bet, out result))
                 {
+                    //kontrola jestli hráč nechce vsadit víc než má
                     if (result > money)
                     {
                         Console.WriteLine("\n----------------------------------\n");
                         Console.WriteLine("Napsali jste špatný input, kolik chcete vsadit?");
                         bet = Console.ReadLine();
                     }
+                    //vše proběhlo ok
                     else
                     {
                         ok = false;
                     }
                 }
+                //pokud je input string
                 else
                 {
                     Console.WriteLine("\n----------------------------------\n");
-                    Console.WriteLine("Tolik peněz nemáte, vsaďte něco prosím pod: " + money);
+                    Console.WriteLine("Zadejte prosím číslo!");
                     bet = Console.ReadLine(); 
                 }
             }
